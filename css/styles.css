@@ -14,7 +14,6 @@ body{
 :root{
    
     --primary-color: #000000;
-    
     --secoundry-color:#562DAE;
     --secLight-color:#D7CBE7;
     --light-color:white;
@@ -131,5 +130,85 @@ li a{
 .nav-log{
     border: 1px solid var(--light-color);
     margin:10px 5px;
+}
+.top-background{
+    background-image: url("../images/topBackground1.png");
+    background-size: cover;
+    height: 70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+
+}
+.top-background h1{
+    font-size: 5rem;
+    color: var(--light-color);
+    /* margin-top: 10px; */
+    padding: 60px 30px;
+    margin-left: 30px;
+}
+.bookbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    margin-top: 40px; 
+
+}
+.bookbtn a{
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--secoundry-color);
+    color: var(--light-color);
+    padding: 14px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin:10px 5px;
+}
+.packages-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.packages-list ul{
+    display: flex;
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+
+}
+.packages-list li{
+    margin:5px 10px !important;
+
+}
+.card{
+    height: 70vh;
+    width: 325px;
+    background-color: var(--secLight-color);
+    border-radius: 10px;
+}
+ #one{
+    background-image: url("../images/birthday.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#two{
+    background-image: url("../images/batch.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#three{
+    background-image: url("../images/graduation.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
