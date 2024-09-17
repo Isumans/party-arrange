@@ -40,14 +40,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$username', '$password', '$email', '$phone_number')";
 
         if ($conn->query($sql) === TRUE) {
-            // Get the user ID of the newly registered user
+            
             $result = $conn->query("SELECT * FROM users WHERE email = '$email'");
             if($result && $result->num_rows === 1) {
                 $user = $result->fetch_assoc();
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 header("Location: index.php");
-                exit(); // Ensure no further code runs after redirection
+                exit(); 
             }
         } else {
             $error = "Failed to register: " . $conn->error;
@@ -81,9 +81,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <div class="login-container">
-        <div class="login-form">
-            <h2>Registration</h2>
+    <div class="login-container ">
+        <div class="login-form reg">
+            <h2 >Registration</h2>
             <?php if (isset($error)): ?>
                 <p class="error"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
