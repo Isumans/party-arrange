@@ -2,7 +2,7 @@
 
 
 
-$conn;
+global $conn;
 function connect()
 {
     global $conn;
@@ -45,6 +45,7 @@ function search($q){
    }
 
 }
+return $conn;
 
 
 

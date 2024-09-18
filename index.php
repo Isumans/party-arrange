@@ -19,21 +19,12 @@
 </head>
 <body>
     <header>
-        <div class="header">
-            <ul class="nav_1">
-                <h2>GROOVY</h2>
-                
-                <li><a class="nav-btn" href="register.php">SIGN UP</a></li>
-                <li><a class="nav-log" href="login.php">LOGIN</a></li>
-                <li><a href="#2">Contact us</a></li>
-                <li><a href="#1">About us</a></li>
-                <li><a href="#">Our Packages</a></li>
-                
-                
-            </ul>
-
-        </div>
-    
+        <?php require "nav.php"; ?>
+        <!-- <script>
+            document.getElementsByClassName("header").innerHTML = fetch("nav.html")
+            .then(Response => Response.text())
+            .then(html => document.getElementsByClassName("header").innerHTML = html);(html => document.getElementById("header").innerHTML = html);(html => document.getElementById("header").innerHTML = html);
+        </script> -->
     </header>
     <div class="top-background">
         <h1>IT'S PARTY TIME!!<br>GET GROOVY WITH GROOVY.</h1>

@@ -78,6 +78,17 @@ label{
 
 
 }
+#aBtn{
+    background-color: var(--secLight-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn a{
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-left: 10px;
+}
 .form-control:focus{
     
     outline: 2px solid  var(--primary-color)
@@ -192,6 +203,9 @@ li a{
     width: 325px;
     background-color: var(--secLight-color);
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
  #one{
     background-image: url("../images/birthday.jpg");
