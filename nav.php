@@ -5,8 +5,8 @@
                 
                 <li><a class="nav-btn" href="register.php">SIGN UP</a></li>
                 <li><a class="nav-log" href="login.php">LOGIN</a></li>
-                <li><a href="#2">Contact us</a></li>
-                <li><a href="#1">About us</a></li>
+                <li><a href="contact.php">Contact us</a></li>
+                <li><a href="about.php">About us</a></li>
                 <li><a href="packages.php">Our Packages</a></li>
                 
                 

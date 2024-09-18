@@ -7,25 +7,37 @@ require 'db_connect.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $result = search("SELECT * FROM users WHERE username = '".$username."' AND password = '".$password."'");
+    $result = search("SELECT * FROM users WHERE email = '".$email."' AND password = '".$password."'");
+    $result2 = search(q: "SELECT * FROM admin_users WHERE email = '".$email."'");
 
-    if ($result && $result->num_rows === 1) {
-        $user = $result->fetch_assoc();
+    if (($result || $result2) && ($result->num_rows === 1 || $result2->num_rows == 1)) {
+
+        if($result && empty($result2)){
+            $user = $result->fetch_assoc();
         
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+    
+            header("Location: index.php");
+        }else if($result && $result2 ){
+            $user = $result2->fetch_assoc();
+            $_SESSION['admin_id'] = $user['admin_id'];
+            $_SESSION['username'] = $user['username'];
 
-        header("Location: index.php");
+            echo $user['admin_id'];
+    
+            header("Location: index.php");
         
     } else {
         $error = "Invalid username or password.";
     }
 
 
-}
+}}
+
 
 
 ?>
@@ -47,8 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="error"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
             <form action="login.php" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" class="form-control" name="username" required>
+                <label for="email">Email:</label>
+                <input type="text" id="email" class="form-control" name="email" required>
 
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
