@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" class="form-control" id="password" name="password" required>
 
                 <button class="btn" type="submit">Login</button>
-                <div class="btn" id="aBtn"><a href="admin_login.php">ADMIN LOGIN PANNEL</a> </div>
+                <!-- <div class="btn" id="aBtn"><a href="admin_login.php">ADMIN LOGIN PANNEL</a> </div> -->
             </form>
         </div>
     </div>

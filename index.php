@@ -26,6 +26,7 @@
             .then(html => document.getElementsByClassName("header").innerHTML = html);(html => document.getElementById("header").innerHTML = html);(html => document.getElementById("header").innerHTML = html);
         </script> -->
     </header>
+    
     <div class="top-background">
         <h1>IT'S PARTY TIME!!<br>GET GROOVY WITH GROOVY.</h1>
         <div class="bookbtn">
@@ -48,5 +49,7 @@
         !</h1>
     <p>This is your dashboard.</p>
     <a href="logout.php">Logout</a>
+
+    
 </body>
 </html>

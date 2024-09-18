@@ -36,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     if(empty($error)){
-        $sql = "INSERT INTO users (username, password, email, phone_number) 
-            VALUES ('$username', '$password', '$email', '$phone_number')";
+        iud("INSERT INTO users (username, password, email, phone_number) 
+            VALUES ('$username', '$password', '$email', '$phone_number')");
 
         if ($conn->query($sql) === TRUE) {
             

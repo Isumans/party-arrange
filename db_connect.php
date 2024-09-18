@@ -5,13 +5,12 @@
 global $conn;
 function connect()
 {
-    global $conn;
+    
     $servername = "localhost";
     $username = "root";
     $password = "";
     $database = "party";
     if (!isset($conn)) {
-        global $conn;
         $conn = new mysqli($servername, $username, $password, $database);
     }
     if ($conn->connect_error) {

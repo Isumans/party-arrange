@@ -179,7 +179,7 @@ li a{
     cursor: pointer;
     margin:10px 5px;
 }
-.packages-container{
+.packages-container, .admin-dash{
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -225,4 +225,10 @@ li a{
     background-position: center;
     background-repeat: no-repeat;
 }
+.ad{
+    color: var(--primary-color)!important;
+    width:400px!important ;
+}
+
+
 
