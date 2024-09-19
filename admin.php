@@ -14,7 +14,29 @@
         $description = $_POST['description'];
         $duration = $_POST['duration'];
 
-        $pack= iud("INSERT INTO packages (package_name,category,price,guest_limit,description,duration) VALUES ('$package_name', '$category', '$price','$guest_limit', '$description', '$duration')");
+        $res1 = search("SELECT * FROM packages WHERE package_name = '".$package_name."' AND category = '".$category."'");
+
+        if($res1 && $res1->num_rows > 0){
+            $row = $res1->fetch_assoc();
+            if(!($row['package_name']==$package_name)){
+                iud("UPDATE packages SET package_name='".$package_name."' WHERE id = '".$row['id']."'");
+            }else if(!($row['category']==$category)){
+                iud("UPDATE packages SET category='".$category."' WHERE id = '".$row['id']."'");
+            }else if(!($row['price']==$price)){
+                iud("UPDATE packages SET price='".$price."' WHERE id = '".$row['id']."'");
+            }else if(!($row['guest_limit']==$guest_limit)){
+                iud("UPDATE packages SET guest_limit = '".$guest_limit."' WHERE id = '".$row['id']."'");
+            }else if(!($row['description']==$description)){
+                iud("UPDATE packages SET description= '".$description."' WHERE id = '".$row['id']."'");
+            }else (!($row['duration']==$duration)){
+                iud("UPDATE packages SET duration = '".$duration."' WHERE id = '".$row['id']."'");
+            }
+            
+        } else {
+            $pack= iud("INSERT INTO packages (package_name,category,price,guest_limit,description,duration) VALUES ('$package_name', '$category', '$price','$guest_limit', '$description', '$duration')");
+
+        }
+
 
 
     }
@@ -68,7 +90,7 @@
                 </li>
                 <li>
                     <div class="card ad">
-                        <h2>Add Packages</h2>
+                        <h2>Add/Update Packages</h2>
                         <form action="admin.php" method="post">
                             <label for="package_name">Package Name:</label>
                             <input type="text" id="package_name" class="form-control" name="package_name" required>
@@ -88,7 +110,7 @@
                             <label for="duration">Duration:</label>
                             <input type="text" class="form-control" id="duration" name="duration" required>
 
-                            <button class="btn" type="submit">Add Package</button>
+                            <button class="btn" type="submit">Add/Update Package</button>
                         </form> 
                     <!-- <a href="add_event.php">Add Event</a> -->
                     </div>
@@ -124,12 +146,57 @@
                     </div>
                 </li>
             </ul>
-            
-           
         </div>
-
+  
 
     </div>
+    <div class="up-dl-container">
+        <div class="up-dl-list">
+                <ul>
+                    <li>
+                    <div class="card ad">
+
+                        <h2>Update package</h2>
+                        <form action="admin.php" method="post">
+                            <label for="package_name">Package Name:</label>
+                            <input type="text" id="package_name" class="form-control" name="package_name" required>
+
+                            <label for="category">Category:</label>
+                            <input type="text" class="form-control" id="category" name="category" required>
+
+                            <label for="price">Price:</label>
+                            <input type="text" class="form-control" id="price" name="price" required>
+
+                            <label for="guest_limit">Guest Limit:</label>
+                            <input type="text" class="form-control" id="guest_limit" name="guest_limit" required>
+                            
+                            <label for="description">Description:</label>
+                            <input type="text" class="form-control" id="description" name="description" required>
+
+                            <label for="duration">Duration:</label>
+                            <input type="text" class="form-control" id="duration" name="duration" required>
+
+                            <button class="btn" type="submit">Add Package</button>
+                        </form> 
+                        </div>
+                    </li>
+                    
+                    
+                    <li>
+                    <div class="card ad">
+                        <h2>User updates</h2>
+                        
+                        </div>
+                    </li>
+
+
+                    
+                    
+                </ul>
+                   
+        </div>
+    </div>
+
     
     <script src="js/validate.js" defer></script> 
     

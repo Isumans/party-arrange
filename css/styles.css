@@ -189,6 +189,12 @@ li a{
     align-items: center;
     height: 100vh;
 }
+
+
+.packages-list{
+    display: flex;
+    flex-direction: column;
+}
 .packages-list ul{
     display: flex;
     list-style-type: none;
@@ -244,6 +250,10 @@ li a{
     align-items: center;
     margin: 20px;
 }
+.ad table, th, td{
+
+    border: 1px solid var(--primary-color);
+}
 .error {
     color: red;
     font-size: 12px;
@@ -252,6 +262,17 @@ li a{
 
 .error-border {
     border: 2px solid red;
+}
+.up-dl-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.up-dl-list ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
 }
 
 
