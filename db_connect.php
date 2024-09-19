@@ -5,7 +5,7 @@
 global $conn;
 function connect()
 {
-    
+    global $conn;
     $servername = "localhost";
     $username = "root";
     $password = "";

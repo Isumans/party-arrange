@@ -105,6 +105,9 @@ label{
     overflow:hidden;
     background-color: var(--primary-color);
 }
+.header .nav_1 a{
+    text-decoration: none;
+}
 .header li{
     float: right;
     display:inline;
@@ -227,7 +230,28 @@ li a{
 }
 .ad{
     color: var(--primary-color)!important;
-    width:400px!important ;
+    width:425px!important ;
+    height: 85vh !important;
+    display: flex!important;
+    justify-content: center !important;
+    align-items: center!important;
+    margin: 5px 5px!important;
+}
+.ad form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.error-border {
+    border: 2px solid red;
 }
 
 
