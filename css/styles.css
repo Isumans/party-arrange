@@ -252,7 +252,7 @@ li a{
 }
 .ad table, th, td{
 
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--secoundry-color);
 }
 .error {
     color: red;
