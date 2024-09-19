@@ -216,19 +216,19 @@ li a{
     flex-direction: column;
     align-items: center;
 }
- #one{
+#one1{
     background-image: url("../images/birthday.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-#two{
+#one2{
     background-image: url("../images/batch.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-#three{
+#one3{
     background-image: url("../images/graduation.jpg");
     background-size: cover;
     background-position: center;
@@ -242,6 +242,12 @@ li a{
     justify-content: center !important;
     align-items: center!important;
     margin: 5px 5px!important;
+}
+.ad2{
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    margin: 5px 14px!important;
 }
 .ad form{
     display: flex;
@@ -265,14 +271,22 @@ li a{
 }
 .up-dl-container{
     display:flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin:10px 5px !important;
+    padding: 10px 5px !important;
 }
 .up-dl-list ul{
     display: flex;
     align-items: center;
     justify-content: center;
     list-style-type: none;
+    margin:10px 5px !important;
+    padding: 10px 5px !important;
+}
+.up-dl-list ul li{
+    font-weight: 600;
 }
 
 
