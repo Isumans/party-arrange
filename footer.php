@@ -2,8 +2,9 @@
         <div class="footercontainer">
           <!-- Left Section -->
           <div>
-            <h3>We Bring Colors In Your Life.</h3>
-            <p>Life is a celebration, and we at PartyHard believe everyone should <br>celebrate, not just the grand occasions but the little ones that put a <br>smile on our faces.</p>
+            <!-- <h3>We Bring Fun In Your Life.</h3> -->
+            <!-- <br> -->
+            
             <!-- Social Media Icons -->
             <div class="scard">
                 <a>
@@ -58,6 +59,9 @@
                   </svg>
                 </a>
             </div>
+            <p>Copyrights ©<script>
+              document.write(new Date().getFullYear());
+            </script> UCSC</p>
             <!-- Right Section: Company and Legal -->
             <!--<div class="fright">
                 <div>
@@ -78,10 +82,11 @@
                 </div>
             -->
           </div>
+          
 <!-- Bottom Section -->
-            <div class="bottomsec">
+            <!-- <div class="bottomsec">
                  <button class="whbutton" id="whbtn">Connect With Us On WhatsApp Right Now</button>
-            </div>              
+            </div>               -->
         </div>
 
 </footer>
