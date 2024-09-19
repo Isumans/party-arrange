@@ -25,15 +25,16 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
 </head>
 <body>
     <?php include 'nav.php'; ?>
-    <div class="up-dl-container">
+    <div  class="cont">
         <!-- <div class="category"> -->
             <h1>Small Party Packages</h1>
-            <div class="up-dl-list">
-                <ul>
+            <div>
+                <ul class="fourth-image-row">
                     <?php 
                     $counter = 1;
                     while (($row=$small_packages->fetch_assoc() )&& $counter<=3): ?>
-                    <li class="card ad2" id="one<?php echo $counter; ?>">
+                    <li class="packimage" >
+                        <img src="images/b<?php echo $counter; ?>.jpg" alt="some image" >
                         <h2><?php echo htmlspecialchars($row['package_name']); ?></h2>
                         <p>Price:<?php echo htmlspecialchars($row['price']); ?></p>
                         <p>Maximum Guest:<?php echo htmlspecialchars($row['guest_limit']); ?></p>
@@ -48,12 +49,14 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
                 
             </div>
             <h1>Medium Party Packages</h1>
-        <div class="up-dl-list">
-            <ul>
+        <div >
+            <ul class="fourth-image-row">
                 <?php 
                 $counter = 1; // Re-initialize counter for Medium packages
                 while (($row = $medium_packages->fetch_assoc() )&& $counter<=3): ?>
-                <li class="card ad2" id="medium-<?php echo $counter; ?>"> <!-- Dynamic ID -->
+                <li class="packimage" > <!-- Dynamic ID -->
+                    <img src="images/m<?php echo $counter; ?>.jpg" alt="some image" >
+
                     <h2><?php echo htmlspecialchars($row['package_name']); ?></h2>
                     <p>Price: <?php echo htmlspecialchars($row['price']); ?></p>
                     <p>Maximum Guests: <?php echo htmlspecialchars($row['guest_limit']); ?></p>
@@ -69,12 +72,14 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
 
         <!-- Large Scale Packages -->
         <h1>Large Party Packages</h1>
-        <div class="up-dl-list">
-            <ul>
+        <div >
+            <ul class="fourth-image-row">
                 <?php 
                 $counter = 1; // Re-initialize counter for Large packages
                 while (($row = $large_packages->fetch_assoc() )&& $counter<=3): ?>
-                <li class="card ad2" id="large-<?php echo $counter; ?>"> <!-- Dynamic ID -->
+                <li class="packimage" > <!-- Dynamic ID -->
+                     <img src="images/L<?php echo $counter; ?>.jpg" alt="some image" >
+
                     <h2><?php echo htmlspecialchars($row['package_name']); ?></h2>
                     <p>Price: <?php echo htmlspecialchars($row['price']); ?></p>
                     <p>Maximum Guests: <?php echo htmlspecialchars($row['guest_limit']); ?></p>
@@ -94,6 +99,6 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
 
 
     </div>
-    
+    <?php require("footer.php"); ?>
 </body>
 </html>

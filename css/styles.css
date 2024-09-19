@@ -575,21 +575,27 @@ header h2 {
     box-shadow: 0 0 5px #f400cb, 0 0 20px #f400cb, 0 0 50px #f400cb,
       0 0 100px #f400cb;
   }
-  
+.cont h1{
+    text-align: center;
+
+
+}
 
 .fourth-image-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
+    list-style-type: none;
 }
 
 .packimage {
     background-color: #212121;
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color);
     border-radius: 8px;
     padding: 20px;
     width: 45%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--primary-color);
     text-align: center;
     margin: 0.5cm;
 }
@@ -706,18 +712,27 @@ header h2 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
 }
 #one2{
     background-image: url("../images/batch.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
 }
 #one3{
     background-image: url("../images/graduation.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
 }
 .ad{
     color: var(--primary-color)!important;
@@ -759,8 +774,8 @@ header h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin:10px 5px !important;
-    padding: 10px 5px !important;
+    /* margin:10px 5px !important; */
+    /* padding: 10px 5px !important; */
 }
 .up-dl-list ul{
     display: flex;
