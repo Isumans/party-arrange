@@ -36,11 +36,13 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
                     <li class="packimage" >
                         <img src="images/b<?php echo $counter; ?>.jpg" alt="some image" >
                         <h2><?php echo htmlspecialchars($row['package_name']); ?></h2>
-                        <p>Price:<?php echo htmlspecialchars($row['price']); ?></p>
-                        <p>Maximum Guest:<?php echo htmlspecialchars($row['guest_limit']); ?></p>
-                        <p>No.of hours:<?php echo htmlspecialchars($row['duration']); ?></p>
-                        <p>About:<?php echo htmlspecialchars($row['description']); ?></p>
-                        <p>Servives:<?php echo htmlspecialchars($row['services_included']); ?></p>
+                        <p>Price: $<?php echo htmlspecialchars($row['price']); ?></p>
+                        <p>Maximum Guest: <?php echo htmlspecialchars($row['guest_limit']); ?></p>
+                        <p>No.of hours: <?php echo htmlspecialchars($row['duration']); ?></p>
+                        <p>About: <?php echo htmlspecialchars($row['description']); ?></p>
+                        <p>Servives: <?php echo htmlspecialchars($row['services_included']); ?></p>
+                        <a href="order.php?package_id=<?php echo $row['id']; ?>" class="btn" >Order Package</a>
+
                     </li>
                     <?php 
                     $counter++;
@@ -58,11 +60,13 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
                     <img src="images/m<?php echo $counter; ?>.jpg" alt="some image" >
 
                     <h2><?php echo htmlspecialchars($row['package_name']); ?></h2>
-                    <p>Price: <?php echo htmlspecialchars($row['price']); ?></p>
+                    <p>Price: $<?php echo htmlspecialchars($row['price']); ?></p>
                     <p>Maximum Guests: <?php echo htmlspecialchars($row['guest_limit']); ?></p>
                     <p>No. of hours: <?php echo htmlspecialchars($row['duration']); ?></p>
                     <p>About: <?php echo htmlspecialchars($row['description']); ?></p>
                     <p>Services: <?php echo htmlspecialchars($row['services_included']); ?></p>
+                    <a href="order.php?package_id=<?php echo $row['id']; ?>" class="btn">Order Package</a>
+
                 </li>
                 <?php 
                 $counter++; // Increment counter for next iteration
@@ -72,7 +76,7 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
 
         <!-- Large Scale Packages -->
         <h1>Large Party Packages</h1>
-        <div >
+        <div id="large">
             <ul class="fourth-image-row">
                 <?php 
                 $counter = 1; // Re-initialize counter for Large packages
@@ -81,11 +85,12 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
                      <img src="images/L<?php echo $counter; ?>.jpg" alt="some image" >
 
                     <h2><?php echo htmlspecialchars($row['package_name']); ?></h2>
-                    <p>Price: <?php echo htmlspecialchars($row['price']); ?></p>
+                    <p>Price: $<?php echo htmlspecialchars($row['price']); ?></p>
                     <p>Maximum Guests: <?php echo htmlspecialchars($row['guest_limit']); ?></p>
                     <p>No. of hours: <?php echo htmlspecialchars($row['duration']); ?></p>
                     <p>About: <?php echo htmlspecialchars($row['description']); ?></p>
                     <p>Services: <?php echo htmlspecialchars($row['services_included']); ?></p>
+                    <a href="order.php?package_id=<?php echo $row['id']; ?>" class="btn">Order Package</a>
                 </li>
                 <?php 
                 $counter++; // Increment counter for next iteration

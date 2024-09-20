@@ -1,10 +1,13 @@
 <?php
+require ('db_connect.php');
 // session_start();
 
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: login.php");
 //     exit();
 // }
+$large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
+
 ?>
 
 
@@ -130,9 +133,33 @@
 <!--packages-->
     <div class="package">
         <h1>RELATED PACKAGES</h1>
-        <button class="packbutton" id="packbtn">View Now</button>
+        <button class="packbutton" id="packbtn"><a href="packages.php#large">Veiw More</a></button>
     </div>
-    <div class="fourth-image-row">
+    <div>
+            <ul class="fourth-image-row">
+                <?php 
+                $counter = 1;
+                while (($row = $large_packages->fetch_assoc() )&& $counter<=3): ?>
+                <li class="packimage" > 
+                     <img src="images/L<?php echo $counter; ?>.jpg" alt="some image" >
+
+                    <h2><?php echo htmlspecialchars($row['package_name']); ?></h2>
+                    <p>Price: $<?php echo htmlspecialchars($row['price']); ?></p>
+                    <p>Maximum Guests: <?php echo htmlspecialchars($row['guest_limit']); ?></p>
+                    <p>No. of hours: <?php echo htmlspecialchars($row['duration']); ?></p>
+                    <p>About: <?php echo htmlspecialchars($row['description']); ?></p>
+                    <p>Services: <?php echo htmlspecialchars($row['services_included']); ?></p>
+                    <div class="packimagebuttons">
+                        
+    
+                    </div>
+                </li>
+                <?php 
+                $counter++; // Increment counter for next iteration
+                endwhile; ?>
+            </ul>
+        </div>
+    <!-- <div class="fourth-image-row">
         <div class="packimage">
             <img src="images/f1.png" alt="Outdoor get together" class="foimagef">
             <h2>Outdoor Get Together</h2>
@@ -163,7 +190,7 @@
                 <button id="packimgbtn" class="packimageinnerbuttons">Customise</button>
             </div>
         </div>    
-    </div>
+    </div> -->
 
 
     <?php require('footer.php'); ?>
