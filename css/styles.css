@@ -10,6 +10,8 @@
 body{
     background-color: var(--primary-color);
     color: var(--light-color);
+    
+
 }
 :root{
    
@@ -104,6 +106,10 @@ label{
     border-radius: 0 10px;
 
 
+}
+.adm{
+    margin:2px 0px!important;
+    padding: 1px 2px!important;
 }
 #aBtn{
     background-color: var(--secLight-color);
@@ -795,19 +801,18 @@ header h2 {
 .ad{
     color: var(--light-color)!important;
     background-color: #212121;
-    width:800px!important ;
-    height: 85vh !important;
+    width:1050px!important ;
+    height: fit !important;
     display: flex!important;
     flex-direction: column;
     justify-content: space-evenly !important;
     align-items: center!important;
-    margin: 25px 5px!important;
+    margin: 25px 0px!important;
     border: 3px solid var(--secoundry-color);
     border-radius: 10px;
 }
 .ad-head{
     border-radius: 10px 10px 0 0;
-
     padding-top: 30px;
     padding-bottom: 30px;
     display: flex;
@@ -833,9 +838,15 @@ header h2 {
     align-items: center;
     margin: 20px;
 }
-.ad table, th, td{
+.ad table{
+    width: 100%;
+}
 
+.ad table, th, td{
     border: 1px solid var(--secoundry-color);
+    border-radius: 5px;
+    padding: 5px;
+
 }
 .error {
     color: red;

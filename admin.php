@@ -6,6 +6,8 @@ $current_packages = search("SELECT * FROM packages");
 
 $current_users = search("SELECT * FROM users");
 
+$current_orders = search("SELECT * FROM orders");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $package_name = $_POST['package_name'];
     $category = $_POST['category'];
@@ -15,30 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $duration = $_POST['duration'];
 
     $res1 = search("SELECT * FROM packages WHERE package_name = '" . $package_name . "' AND category = '" . $category . "'");
-    if ($res1 && $res1->num_rows > 0) {
-        $row = $res1->fetch_assoc();
-        if (
-            $row['package_name'] != $package_name || $row['category'] != $category ||
-            $row['price'] != $price || $row['guest_limit'] != $guest_limit ||
-            $row['description'] != $description || $row['duration'] != $duration
-        ) {
-
-            $updateQuery = "UPDATE packages SET 
-                        package_name='$package_name', 
-                        category='$category', 
-                        price='$price', 
-                        guest_limit='$guest_limit', 
-                        description='$description', 
-                        duration='$duration' 
-                        WHERE id='" . $row['id'] . "'";
-
-            iud($updateQuery);
-
-        } else {
-            $pack = iud("INSERT INTO packages (package_name,category,price,guest_limit,description,duration) VALUES ('$package_name', '$category', '$price','$guest_limit', '$description', '$duration')");
-
-        }
-    }
+    
+    $row = $res1->fetch_assoc();
+    iud("INSERT INTO packages (package_name,category,price,guest_limit,description,duration) VALUES ('$package_name', '$category', '$price','$guest_limit', '$description', '$duration')");
+    
+    header("Location: admin.php"); 
+    exit();
 
 
 
@@ -72,21 +56,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <table>
                                 <thead>
                                     <tr>
+                                        <th>User Id</th>
                                         <th>Package Name</th>
                                         <th>Category</th>
                                         <th>Price</th>
                                         <th>Capacity</th>
+                                        <th>Hours</th>
+                                        <th>Actions</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php while ($row = $current_packages->fetch_assoc()): ?>
                                         <tr>
-                                            <td><?php echo htmlspecialchars($row['package_name']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['category']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['price']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['guest_limit']); ?></td>
+                                            <form action="update_delete.php" method="post">
+                                                <input type="hidden" id="package_id" name="package_id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                                                <td><?php echo htmlspecialchars($row['id']) ?></td>
+                                                <td><input type="text" id="package_name" name="package_name" value="<?php echo htmlspecialchars($row['package_name']); ?>"></td>
+                                                <td><input type="text" id="category" name="category" value="<?php echo htmlspecialchars($row['category']); ?>"></td>
+                                                <td><input type="text" id="price" name="price" value="<?php echo htmlspecialchars($row['price']); ?>"></td>
+                                                <td><input type="text" id="guest_limit" name="guest_limit" value="<?php echo htmlspecialchars($row['guest_limit']); ?>"></td>
+                                                <td><input type="text" id="duration" name="duration" value="<?php echo htmlspecialchars($row['duration']); ?>"></td>
+                                                <td>
+                                                    <button type="submit" id="update" name="update" class="btn adm">Update</button>
+                                                    <button type="submit" id="delete" name="delete" class="btn adm">Delete</button>
+                                                </td>
 
+                                            </form>
+                                            
                                         </tr>
                                     <?php endwhile; ?>
                                 </tbody>
@@ -100,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li>
                     <div class="ad">
                         <div class="ad-head">
-                            <h2 class="topic">Add/Update Packages</h2>
+                            <h2 class="topic">Add Packages</h2>
                         </div>
                         <form action="admin.php" method="post">
                             <label for="package_name">Package Name:</label>
@@ -121,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="duration">Duration:</label>
                             <input type="text" class="form-control" id="duration" name="duration" required>
 
-                            <button class="btn" type="submit">Add/Update Package</button>
+                            <button class="btn" type="submit">Add Package</button>
                         </form>
                         <!-- <a href="add_event.php">Add Event</a> -->
                     </div>
@@ -135,16 +132,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <table>
                                 <thead>
                                     <tr>
+                                        <th>User Id</th>
+                                        <th>Username</th>
                                         <th>Email</th>
                                         <th>Contact Number</th>
+                                        <th>Created Date</th>
+                                        <th>Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php while ($row = $current_users->fetch_assoc()): ?>
                                         <tr>
-                                            <td><?php echo htmlspecialchars($row['email']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['phone_number']); ?></td>
+                                            <form method="post" action="UDuser.php">
+                                                <input type="hidden" id="user_id" name="user_id" value="<?php echo htmlspecialchars($row['id']); ?>">
+
+                                                <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                                <td><input type="text" id="username" name="username" value="<?php echo htmlspecialchars($row['username']); ?>"></td>
+                                                <td><input type="text" id="email" name="email" value="<?php echo htmlspecialchars($row['email']); ?>"></td>
+                                                <td><input type="text" id="phone_number" name="phone_number" value="<?php echo htmlspecialchars($row['phone_number']); ?>"></td>
+                                                <td><?php echo htmlspecialchars($row['created_at']); ?></td>
+                                                <td>
+                                                    <button type="submit" id="update" name="update" class="btn adm">Update</button>
+                                                    <button type="submit" id="delete" name="delete" class="btn adm">Delete</button>
+                                                </td>
+
+                                            </form>
+                                            
+
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
+                        <?php else: ?>
+                            <p>No Users/p>
+                        <?php endif; ?>
+
+                    </div>
+                </li>
+                
+                
+                <li>
+                    <div class="ad">
+                        <div class="ad-head">
+                        <h2 class="topic">Scheduled Events</h2>
+                        </div>
+                        <?php if ($current_orders && $current_orders->num_rows > 0): ?>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>User id</th>
+                                        <th>Package id</th>
+                                        <th>Event date</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row = $current_orders->fetch_assoc()): ?>
+                                        <tr>
+                                            <td><?php echo htmlspecialchars($row['user_id']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['package_id']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['event_date']) ?></td>
 
                                         </tr>
                                     <?php endwhile; ?>
@@ -153,47 +201,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php else: ?>
                             <p>No packages found.</p>
                         <?php endif; ?>
-
-                    </div>
-                </li>
-                <li>
-                    <div class="ad">
-                        <div class="ad-head">
-                        <h2 class="topic">Delete Package</h2>
-                        </div>
-                    
-                        <form action="deletePackage.php" method="post">
-                            <label for="package_name">Package Name:</label>
-                            <input type="text" id="package_name" class="form-control" name="package_name" required>
-
-                            <label for="category">Category:</label>
-                            <input type="text" class="form-control" id="category" name="category" required>
-
-                            <button class="btn" type="submit">Delete Package</button>
-                        </form>
-                    </div>
-                </li>
-                <li>
-                    <div class="ad">
-                        <div class="ad-head">
-                        <h2 class="topic">Remove User</h2>
-                        </div>
-                        <form action="UDuser.php" method="post">
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" class="form-control" name="username" required>
-
-                            <label for="email">Email:</label>
-                            <input type="text" class="form-control" id="email" name="email" required>
-
-                            <button class="btn" type="submit">Remove user</button>
-
-                    </div>
-                </li>
-                <li>
-                    <div class="ad">
-                        <div class="ad-head">
-                        <h2 class="topic">Scheduled Events</h2>
-                        </div>
                     </div>   
                 </li>
             </ul>

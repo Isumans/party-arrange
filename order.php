@@ -76,7 +76,7 @@ if(isset($_GET['package_id'])){
                 <input type="text" id="card_holder_name" class="form-control" name="card_holder_name" required>
 
                 <label for="expiry_date">Expiry Date:</label>
-                <input type="text" id="expiry_date" class="form-control" name="expiry_date" required>
+                <input type="month" id="expiry_date" class="form-control" name="expiry_date" required>
                 
                 <label for="cvv">CVV:</label>
                 <input type="text" id="cvv" class="form-control" name="cvv" required>
