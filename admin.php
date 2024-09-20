@@ -2,11 +2,29 @@
 session_start();
 require 'db_connect.php';
 
+if (isset($_SESSION['user_id'])) {
+    $isAdmin_rs = search("SELECT *  FROM admin_users WHERE user_id='" . $_SESSION['user_id'] . "';");
+    
+    
+    $isAdmin = $isAdmin_rs->num_rows==0;
+    if ($isAdmin) {
+        header("Location: index.php");
+        exit();
+    }
+
+}else{
+    header("Location: login.php");
+    exit();
+}
+
+
 $current_packages = search("SELECT * FROM packages");
 
 $current_users = search("SELECT * FROM users");
 
 $current_orders = search("SELECT * FROM orders");
+
+$current_responses = search("SELECT * FROM responses");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $package_name = $_POST['package_name'];
@@ -203,6 +221,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php endif; ?>
                     </div>   
                 </li>
+                <li>
+                    <div class="ad">
+                        <div class="ad-head">
+                        <h2 class="topic">User Responses</h2>
+                        </div>
+                        <?php if ($current_responses && $current_responses->num_rows > 0): ?>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>User id</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row = $current_responses->fetch_assoc()): ?>
+                                        <tr>
+                                            <td><?php echo htmlspecialchars($row['user_id']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['message']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['created_at']); ?></td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
+                        <?php else: ?>
+                            <p>No packages found.</p>
+                        <?php endif; ?>
+                    </div>   
+                </li>
+                
             </ul>
         </div>
 

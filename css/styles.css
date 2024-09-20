@@ -196,6 +196,16 @@ li a{
     align-items: center; */
 
 }
+.user{
+    color:var(--secoundry-color);
+    background-color: var(--secLight-color);
+    padding: 7px 12px;
+    border-radius: 45px;
+    margin-top: 6px;
+    margin-right: 8px;
+    text-align: center;
+    border: 3px solid var(--secoundry-color);
+}
 .top-background h1{
     font-size: 5rem;
     color: var(--light-color);

@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 require "db_connect.php";
 
@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result && $result->num_rows > 0) {
             $error = "Email already exists";
         } else {
+
             $email = $_POST["email"];
         }
 
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     if(empty($error)){
-        iud("INSERT INTO users (username, password, email, phone_number) 
+        $sql=iud("INSERT INTO users (username, password, email, phone_number) 
             VALUES ('$username', '$password', '$email', '$phone_number')");
 
         if ($conn->query($sql) === TRUE) {
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit(); 
             }
         } else {
-            $error = "Failed to register: " . $conn->error;
+            // $error = "Failed to register: " . $conn->error;
         }
 
         

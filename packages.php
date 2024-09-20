@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require 'db_connect.php';
 
 $small_packages= search("SELECT * FROM packages WHERE category= 'Small Scale'");

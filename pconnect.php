@@ -1,30 +1,27 @@
 <?php  
-// Initialize variables for error message and success message  
+session_start();
+require ("db_connect.php");
 $error = "";  
 $success = "";  
 
-// Process form submission  
 if ($_SERVER["REQUEST_METHOD"] == "POST") {  
     $name = trim($_POST["name"]);  
     $email = trim($_POST["email"]);  
     $message = trim($_POST["message"]);  
 
-    // Validate required fields  
     if (empty($name) || empty($email) || empty($message)) {  
         $error = "Please fill in all fields.";  
     } else {  
-        // Sending email  
-        $to = "getgroovy@gmail.com";  
-        $subject = "Contact Us Form Submission from $name";  
-        $body = "Name: $name\nEmail: $email\nMessage:\n$message";  
-        $headers = "From: $email";  
-
-        if (mail($to, $subject, $body, $headers)) {  
-            $success = "Message sent successfully!";  
-            $name = $email = $message = ""; // Clear the form inputs  
-        } else {  
-            $error = "There was a problem sending your message. Please try again.";  
-        }  
+    $res1= search("SELECT * FROM users WHERE email='$email'");
+    if($res1 && $res1->num_rows > 0){
+    $row= $res1->fetch_assoc();
+    
+    iud("INSERT INTO responses (user_id,message) VALUES ('".$row["id"]."', '$message')");
+    header("Location:pconnect.php");
+    exit();
+    }else{
+        $error = "not a valid email. Please try again later.";
+    }
     }  
 }  
 ?>  
@@ -35,10 +32,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Contact Us</title>  
-    <link rel="stylesheet" type="text/css" href="css/styles1.css"> <!-- Ensure the path is correct -->  
+    <link rel="stylesheet" type="text/css" href="css/styles1.css"> 
+    <link rel="stylesheet" type="text/css" href="css/styles.css"> 
 </head>  
-<body>  
-
+<body> 
+    <header>
+    <?php require("nav.php"); ?>
+    </header> 
+    
+<div class="login-container">
 <div class="contact-container">  
     <h1>Contact Us</h1>  
 
@@ -69,6 +71,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Feel free to reach out with any questions!</p>  
     </div>  
 </div>  
+
+</div>
+
+
+<?php require("footer.php");?>  
 
 </body>  
 </html> 
