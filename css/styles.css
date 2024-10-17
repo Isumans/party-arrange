@@ -19,6 +19,7 @@ body{
     --secoundry-color:#562DAE;
     --secLight-color:#D7CBE7;
     --light-color:white;
+    --accent-color: #FFD700;
     
 
 }
@@ -30,6 +31,11 @@ body{
     background-color: var(--primary-color);
     color: var(--light-color);
 
+}
+.login-container h1{
+    font-size: 3rem;
+    color: var(--secLight-color);
+    font-style: italic;
 }
 .payment-cont{
     display: flex;
@@ -46,7 +52,7 @@ body{
     align-items: center;
     width: 50%;
     padding: 20px;
-    height: 50vh;
+    height: fit-content;
 
     background-color: var(--secoundry-color);
     border-radius: 10px;
@@ -90,6 +96,10 @@ body{
     outline: none;
    
 }
+.mar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 label{
     font-weight: 600;
     margin-bottom: 10px;
@@ -110,6 +120,7 @@ label{
 .adm{
     margin:2px 0px!important;
     padding: 1px 2px!important;
+    border: 3px solid var(--secoundry-color);
 }
 #aBtn{
     background-color: var(--secLight-color);
@@ -631,6 +642,8 @@ header h2 {
   }
 .cont h1{
     text-align: center;
+    color: var(--secLight-color);
+    font-size: 2.7rem;
 
 
 }
@@ -663,7 +676,10 @@ header h2 {
 .packimage h2 {
     font-size: 1.5em;
     margin: 10px 0;
-    font-family: 'Courier New', Courier, monospace;
+    color: var(--secLight-color);
+    font-style: italic;
+    font-weight: 800;
+    /* font-family: 'Courier New', Courier, monospace; */
 }
 
 .packimage p {
@@ -685,7 +701,8 @@ header h2 {
     margin-top: 10px;
 }
 .btn:hover{
-    background-color: var(--secoundry-color);
+    background-color: var(--secLight-color);
+    color:var(--primary-color);
 }
 
 
@@ -743,6 +760,9 @@ header h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+.admin-dash h1{
+    font-size: 3rem;
 }
 .admin-list{
     display: flex;
@@ -831,10 +851,29 @@ header h2 {
     background-color: #000000;
     width: 100%;
 }
+.ad head h2{
+    font-size: 2.3rem;
+}
 .ad .topic{
     /* position: relative; */
-
 }
+tr td,th {
+    position: relative;
+    /* padding-left: 30px;
+    font-size: 20px; */
+    /* color: var(--light-color);
+     */
+     background-color: var(--secLight-color)!important;
+     color: var(--primary-color);
+}
+td input{
+    /* padding: 5px; */
+    /* margin: 5px; */
+    background-color:var(--light-color);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
 .ad2{
     display: flex!important;
     justify-content: center!important;
@@ -1037,6 +1076,10 @@ footer p{
     font-size: 20px;
     padding-top: 2cm;
   }
+  .booking button a{
+    text-decoration: none;
+    color:#ffffff80;
+  }
 
   .whbutton{
     padding: 10px 20px;
@@ -1054,6 +1097,53 @@ footer p{
     user-select: none;
     align-tracks: center;
   }
+  /* help page */
+  .helpcon{
+    height: fit-content !important;
+  }
+  .faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item strong {
+    font-size: 1.2rem; 
+    color: var(--light-color); 
+}
+
+.faq-item p {
+    font-size: 1rem;
+    color:var(--primary-color); 
+    padding-left: 10px; 
+    border-left: 2px solid var(--accent-color); 
+    margin-top: 5px;
+    padding-top: 5px;
+}
+.help-section {
+    margin-bottom: 30px; /* Increased spacing between sections */
+}
+
+.help-section h2 {
+    font-size: 2rem; /* Larger heading */
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--accent-color); /* Accent color for headings */
+}
+
+.help-section li p, .help-section ul {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--secLight-color);
+}
+
+.help-section ul {
+    padding-left: 20px; /* Space for list items */
+}
+
+.help-section ul li {
+    margin-bottom: 10px;
+}
+
   
 
 

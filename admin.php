@@ -37,8 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $res1 = search("SELECT * FROM packages WHERE package_name = '" . $package_name . "' AND category = '" . $category . "'");
     
     $row = $res1->fetch_assoc();
+    if ($row>0) {
+        $error = "Package already exists in the selected category.";
+    } else {
     iud("INSERT INTO packages (package_name,category,price,guest_limit,description,duration) VALUES ('$package_name', '$category', '$price','$guest_limit', '$description', '$duration')");
-    
+    }
     header("Location: admin.php"); 
     exit();
 
@@ -87,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <tbody>
                                     <?php while ($row = $current_packages->fetch_assoc()): ?>
                                         <tr>
-                                            <form action="update_delete.php" method="post">
+                                            <form action="update_delete.php" method="post" id="pChange">
                                                 <input type="hidden" id="package_id" name="package_id" value="<?php echo htmlspecialchars($row['id']); ?>">
                                                 <td><?php echo htmlspecialchars($row['id']) ?></td>
                                                 <td><input type="text" id="package_name" name="package_name" value="<?php echo htmlspecialchars($row['package_name']); ?>"></td>
@@ -117,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="ad-head">
                             <h2 class="topic">Add Packages</h2>
                         </div>
-                        <form action="admin.php" method="post">
+                        <form action="admin.php" method="post" id="packForm">
                             <label for="package_name">Package Name:</label>
                             <input type="text" id="package_name" class="form-control" name="package_name" required>
 
@@ -138,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <button class="btn" type="submit">Add Package</button>
                         </form>
-                        <!-- <a href="add_event.php">Add Event</a> -->
+                        
                     </div>
                 </li>
                 <li>
@@ -256,6 +259,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     </div>
+    <?php require('footer.php'); ?>
 
 
 

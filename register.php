@@ -4,69 +4,33 @@
 require "db_connect.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(strlen($_POST["username"])<1||strlen($_POST["username"])>50){
-        $error="Username is invalid";
-        
-    }else{
-        $username=$_POST["username"];
-    }
-    if(strlen($_POST["password"])<1||strlen($_POST["password"])>255){
-        $error="Username is invalid";
-        
-    }else{
-        $password=$_POST["password"];
-    }
-    if(strlen($_POST["email"])<1||strlen($_POST["email"])>100){
-        $error= "Invalid email address";
-        
-    }else{
-        $result = search("SELECT * FROM users WHERE email = '".$_POST["email"]."'");
-        if ($result && $result->num_rows > 0) {
-            $error = "Email already exists";
-        } else {
-
-            $email = $_POST["email"];
-        }
-
-    }
-    if(strlen($_POST["phone_number"])<1||strlen($_POST["phone_number"])>15){
-        $error= "Invalid phone number";
-        
-    }else{
-        $phone_number = $_POST["phone_number"];
-    }
     
-    if(empty($error)){
-        $sql=iud("INSERT INTO users (username, password, email, phone_number) 
+    $username=$_POST["username"];
+    $password=$_POST["password"];
+    $result = search("SELECT * FROM users WHERE email = '".$_POST["email"]."'");
+    if ($result && $result->num_rows > 0) {
+           $error = "Email already exists";
+     } else {
+        $email = $_POST["email"];
+        }
+    $phone_number = $_POST["phone_number"];
+    
+    $sql=iud("INSERT INTO users (username, password, email, phone_number) 
             VALUES ('$username', '$password', '$email', '$phone_number')");
 
-        if ($conn->query($sql) === TRUE) {
             
-            $result = $conn->query("SELECT * FROM users WHERE email = '$email'");
-            if($result && $result->num_rows === 1) {
-                $user = $result->fetch_assoc();
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                header("Location: index.php");
-                exit(); 
-            }
-        } else {
-            // $error = "Failed to register: " . $conn->error;
+        $result = $conn->query("SELECT * FROM users WHERE email = '$email'");
+        if($result->num_rows === 1) {
+            $user = $result->fetch_assoc();
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            header("Location: login.php");
+            exit(); 
         }
+        
 
         
-        
-        // if() {
-        //     $user = $result->fetch_assoc();
-            
-        //     $_SESSION['user_id'] = $user['id'];
-        //     $_SESSION['username'] = $user['username'];
-        //     header("Location: index.php");
-        //     exit();
-        // }else{
-        //     $error="Failed to register";
-        // }  
-    }
+    
 
 }
 
@@ -84,11 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="login-container ">
         <div class="login-form reg">
-            <h2 >Registration</h2>
+            <h1 >Registration</h1>
             <?php if (isset($error)): ?>
                 <p class="error"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
-            <form action="register.php" method="post">
+            <form action="register.php" method="post" id="registerV">
                 <label for="username">Username:</label>
                 <input type="text" id="username" class="form-control" name="username" default="" required>
 
@@ -105,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
-    <script src="js/scripts.js"></script>
+    <script src="js/registrationV.js"></script>
 </body>
 
 </html>

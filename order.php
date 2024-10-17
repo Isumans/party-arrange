@@ -83,7 +83,6 @@ if(isset($_GET['package_id'])){
 
 
                 <button class="btn" type="submit">Schedule</button>
-                <!-- <div class="btn" id="aBtn"><a href="admin_login.php">ADMIN LOGIN PANNEL</a> </div> -->
             </form>
         </div>
     </div>

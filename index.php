@@ -1,12 +1,7 @@
 <?php
 session_start();
 require ('db_connect.php');
-// session_start();
 
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: login.php");
-//     exit();
-// }
 $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
 
 ?>
@@ -24,21 +19,15 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
 <body>
     <header>
         <?php require "nav.php"; ?>
-        <!-- <script>
-            document.getElementsByClassName("header").innerHTML = fetch("nav.html")
-            .then(Response => Response.text())
-            .then(html => document.getElementsByClassName("header").innerHTML = html);(html => document.getElementById("header").innerHTML = html);(html => document.getElementById("header").innerHTML = html);
-        </script> -->
+       
     </header>
     
     <div class="top-background">
     <h1>GET GROOVY GET WILD<br>
     IT'S TIME TO PARTY GEN Z STYLE!</h1>
         <div class="bookbtn">
-            <a href="#">Book now</a>
-            <!-- <script type="text/javascript">
-                if($_SESS)
-            </script> -->
+            <a href="packages.php">Book now</a>
+
         </div>
     </div>
     <div class="hero">
@@ -59,15 +48,7 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
             </div>
         </div>
     </div>
-    <!-- <div class="packages-container">
-        <div class="packages-list">
-            <ul>
-                <li><div class="card" id="one"><h2>Birthday's</h2></div></li>
-                <li><div class="card" id="two"><h2>Batch Parties</h2></div></li>
-                <li><div class="card" id="three"><h2>Graguations</h2></div></li>
-            </ul>
-        </div>
-    </div> -->
+ 
     <div class="intro">
          <h1>Groovy , Wild , The Gen-Z Style</h1>
         <p>Unleash your inner rebel,break free from the norm and join the ultimate Gen-Z party<br>experience where individuality reigns supreme.</p>
@@ -120,7 +101,7 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
 <!--booking-->
     <div class="booking">
         <h1>BOOK NOW - PARTY NOW - BOOK NOW</h1>
-        <button class="bookbutton" id="bookbtn">Get This Package</button>
+        <button class="bookbutton" id="bookbtn"><a href="packages.php">Get This Package</a></button>
     </div>
     <div class="third-image-row">
         <img src="images/t1.png" alt="partypic" class="bookf-image">
@@ -160,38 +141,7 @@ $large_packages= search("SELECT * FROM packages WHERE category= 'Large Scale'");
                 endwhile; ?>
             </ul>
         </div>
-    <!-- <div class="fourth-image-row">
-        <div class="packimage">
-            <img src="images/f1.png" alt="Outdoor get together" class="foimagef">
-            <h2>Outdoor Get Together</h2>
-            <p>Enjoy the beautiful weather of Fujairah and make memories.</p>
-            <span class="price">???? LKR</span>
-            <div class="packimagebuttons">
-                <button id="packimgbtn" class="packimageinnerbuttons">Learn More</button>
-                <button id="packimgbtn" class="packimageinnerbuttons">Customise</button>
-            </div>
-        </div>
-        <div class="packimage">
-            <img src="images/f2.png" alt="Explore the desert" class="foimages">
-            <h2>Explore The Desert</h2>
-            <p>Gather around and listen to your friends' most miraculous stories.</p>
-            <span class="price">???? LKR</span>
-            <div class="packimagebuttons" >
-                <button id="packimgbtn" class="packimageinnerbuttons">Learn More</button>
-                <button id="packimgbtn" class="packimageinnerbuttons">Customise</button>
-            </div>
-        </div>
-        <div class="packimage">
-            <img src="images/f3.png" alt="Graduation Party" class="foimaget">
-            <h2>Graduation Party</h2>
-            <p>Let's party hard because you studied hard.</p>
-            <span class="price">???? LKR</span>
-            <div class="packimagebuttons">
-                <button id="packimgbtn" class="packimageinnerbuttons">Learn More</button>
-                <button id="packimgbtn" class="packimageinnerbuttons">Customise</button>
-            </div>
-        </div>    
-    </div> -->
+
 
 
     <?php require('footer.php'); ?>

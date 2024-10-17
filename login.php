@@ -41,13 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="login-container">
         <div class="login-form">
-            <h2>Login</h2>
+            <h1>Login</h1>
             <?php if (isset($error)): ?>
                 <p class="error"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
-            <form action="login.php" method="post">
+            <form action="login.php" method="post" id="loginV">
                 <label for="email">Email:</label>
-                <input type="text" id="email" class="form-control" name="email" required>
+                <input type="text" id="email" class="form-control" name="email" >
 
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
-    <script src="js/scripts.js"></script>
+    <script src="js/loginV.js"></script>
 </body>
 
 </html>

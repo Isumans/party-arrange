@@ -38,8 +38,8 @@ if (isset($_SESSION['user_id'])) {
         }
 
         ?>
-        <li><a href="pconnect.php">Contact us</a></li>
-        <li><a href="help.php">Help</a></li>
+        <li><a href="connect.php">Contact us</a></li>
+        <li><a href="rhelp.php">Help</a></li>
         <li><a href="packages.php">Our Packages</a></li>
         <?php
         
