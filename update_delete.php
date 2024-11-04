@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (isset($_POST['delete'])) {
-        $deleteQuery = "DELETE FROM packages WHERE id='$package_id'";
+       $deleteQuery = "DELETE FROM packages WHERE id='$package_id'";
         iud($deleteQuery);
         header("Location: admin.php"); 
-        exit();
+        exit(); 
     }
 }
 ?>

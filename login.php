@@ -42,18 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="login-container">
         <div class="login-form">
             <h1>Login</h1>
-            <?php if (isset($error)): ?>
-                <p class="error"><?php echo htmlspecialchars($error); ?></p>
-            <?php endif; ?>
+            
             <form action="login.php" method="post" id="loginV">
                 <label for="email">Email:</label>
                 <input type="text" id="email" class="form-control" name="email" >
 
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" >
 
                 <button class="btn" type="submit">Login</button>
-                <!-- <div class="btn" id="aBtn"><a href="admin_login.php">ADMIN LOGIN PANNEL</a> </div> -->
             </form>
         </div>
     </div>

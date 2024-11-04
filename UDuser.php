@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['delete'])) {
         $deleteQuery = "DELETE FROM users WHERE id='".$user_id."'";
+        
         iud($deleteQuery);
         header("Location: admin.php"); 
         exit();

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require ('db_connect.php');
 
 if(isset($_GET['package_id'])){
@@ -56,6 +56,10 @@ if(isset($_GET['package_id'])){
 
 </head>
 <body>
+    <header >
+    <?php require("nav.php"); ?>
+
+    </header>
 <div class="payment-cont">
         <div class="payment">
             <h2>Order Package</h2>
@@ -82,10 +86,14 @@ if(isset($_GET['package_id'])){
                 <input type="text" id="cvv" class="form-control" name="cvv" required>
 
 
-                <button class="btn" type="submit">Schedule</button>
+                <button class="btn" type="submit" onclick="showAlertAndSubmit(event)">Schedule</button>
             </form>
         </div>
     </div>
+    <?php require("footer.php");?>  
+
+    <script src="js/packageUD.js" defer></script>
+
     
     
 </body>

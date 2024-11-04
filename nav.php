@@ -2,7 +2,7 @@
 
 
 
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id'])&&$_SESSION['user_id']) {
     $isAdmin_rs = search("SELECT *  FROM admin_users WHERE user_id='" . $_SESSION['user_id'] . "';");
     
     
@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
         
 
         <?php
-        if (isset($_SESSION['user_id'])&&$_SESSION['user_id']) {
+        if (isset($_SESSION['user_id'])) {
             ?>
 
             <li class="user"> user: <br><?php echo $_SESSION['username']?></li>
@@ -38,7 +38,7 @@ if (isset($_SESSION['user_id'])) {
         }
 
         ?>
-        <li><a href="connect.php">Contact us</a></li>
+        <li><a href="contact.php">Contact us</a></li>
         <li><a href="rhelp.php">Help</a></li>
         <li><a href="packages.php">Our Packages</a></li>
         <?php

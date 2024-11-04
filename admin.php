@@ -16,7 +16,7 @@ if (isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
+$adminUser =search("SELECT * FROM admin_users");
 
 $current_packages = search("SELECT * FROM packages");
 
@@ -99,8 +99,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <td><input type="text" id="guest_limit" name="guest_limit" value="<?php echo htmlspecialchars($row['guest_limit']); ?>"></td>
                                                 <td><input type="text" id="duration" name="duration" value="<?php echo htmlspecialchars($row['duration']); ?>"></td>
                                                 <td>
-                                                    <button type="submit" id="update" name="update" class="btn adm">Update</button>
-                                                    <button type="submit" id="delete" name="delete" class="btn adm">Delete</button>
+                                                    <button type="submit" id="update" name="update" class="btn adm" onclick="showAlertAndSubmit(event)">Update</button>
+                                                    <button type="submit" id="delete" name="delete" class="btn adm" onclick="showAlertAndSubmit(event)">Delete</button>
                                                 </td>
 
                                             </form>
@@ -139,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="duration">Duration:</label>
                             <input type="text" class="form-control" id="duration" name="duration" required>
 
-                            <button class="btn" type="submit">Add Package</button>
+                            <button class="btn" type="submit" onclick="showAlertAndSubmit(event)">Add Package</button>
                         </form>
                         
                     </div>
@@ -174,8 +174,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <td><input type="text" id="phone_number" name="phone_number" value="<?php echo htmlspecialchars($row['phone_number']); ?>"></td>
                                                 <td><?php echo htmlspecialchars($row['created_at']); ?></td>
                                                 <td>
-                                                    <button type="submit" id="update" name="update" class="btn adm">Update</button>
-                                                    <button type="submit" id="delete" name="delete" class="btn adm">Delete</button>
+                                                    <button type="submit" id="update" name="update" class="btn adm" onclick="showAlertAndSubmit(event)">Update</button>
+                                                    <button type="submit" id="delete" name="delete" class="btn adm" onclick="showAlertAndSubmit(event)">Delete</button>
                                                 </td>
 
                                             </form>
@@ -186,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </tbody>
                             </table>
                         <?php else: ?>
-                            <p>No Users/p>
+                            <p>No Users</p>
                         <?php endif; ?>
 
                     </div>
@@ -249,10 +249,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </tbody>
                             </table>
                         <?php else: ?>
-                            <p>No packages found.</p>
+                            <p>No responses found.</p>
                         <?php endif; ?>
                     </div>   
                 </li>
+                <li>
+                    <div class="ad">
+                        <div class="ad-head">
+                        <h2 class="topic">Admin Users</h2>
+                        </div>
+                        <?php if ($adminUser && $adminUser->num_rows > 0): ?>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>User id</th>
+                                        <th>username</th>
+                                        <th>email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row5 = $adminUser->fetch_assoc()): ?>
+                                        <tr>
+                                            <td><?php echo htmlspecialchars($row5['user_id']); ?></td>
+                                            <td><?php echo htmlspecialchars($row5['username']); ?></td>
+                                            <td><?php echo htmlspecialchars($row5['email']); ?></td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
+                        <?php else: ?>
+                            <p>No admin users found.</p>
+                        <?php endif; ?>
+                    </div>   
+                </li>
+
                 
             </ul>
         </div>
@@ -262,8 +292,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php require('footer.php'); ?>
 
 
-
+    <script src="js/packageUD.js" defer></script>
     <script src="js/validate.js" defer></script>
+    
 
 
 

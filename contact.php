@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
         <textarea name="message" id="message" class="form-control large-message mar" placeholder="Your Message" rows="7" required><?= isset($message) ? htmlspecialchars($message) : '' ?></textarea>  
     
-        <button type="submit" class="btn">Send Message</button>  
+        <button type="submit" class="btn" onclick="showAlertAndSubmit(event)">Send Message</button>  
     
 </form>  
 
@@ -69,5 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php require("footer.php");?>  
     <script src="js/cconectV.js" defer></script>
+    <script src="js/packageUD.js" defer></script>
+
 </body>
 </html>
